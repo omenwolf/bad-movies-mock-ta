@@ -14,13 +14,25 @@ class App extends React.Component {
       favorites: [{deway: "favorites"}],
       showFaves: false,
     };
-    
+
     // you might have to do something important here!
+    this.getMovies = this.getMovies.bind(this);
+    // this.saveMovie = this.saveMovie.bind(this);
+    // this.deleteMovie = this.deleteMovie.bind(this);
+    // this.swapFavorites = this.swapFavorites.bind(this);
   }
 
   getMovies() {
     // make an axios request to your server on the GET SEARCH endpoint
-    axios.get('/search',  )
+    axios.get('/search')
+      .then((response) => {
+        console.log(response)
+        this.setState(response.movies)
+      })
+      .catch((error)=>{
+        console.log(error)
+      })
+
   }
 
   saveMovie() {
@@ -43,9 +55,8 @@ class App extends React.Component {
   	return (
       <div className="app">
         <header className="navbar"><h1>Bad Movies</h1></header> 
-        
         <div className="main">
-          <Search swapFavorites={this.swapFavorites} showFaves={this.state.showFaves}/>
+          <Search swapFavorites={this.swapFavorites} showFaves={this.state.showFaves} movieData={this.getMovies}/>
 
           {/* implementation of passing props to the rest of the list items in the Movies.jsx file */}
           {/* {props.map((showFaves, favorites, movies)=>{

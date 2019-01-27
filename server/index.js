@@ -1,9 +1,9 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var request = require('request')
+var axios = require('axios')
 const { API_KEY } = require('../config.js');
 var app = express();
-var axios = require('axios')
 
 // Sign up and get your moviedb API key here:
 // https://www.themoviedb.org/account/signup
@@ -44,8 +44,10 @@ app.get('/genres', function(req, res) {
     // use this endpoint to search for movies by genres (using API key): https://api.themoviedb.org/3/discover/movie
     axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=vote_average.asc&include_adult=false&include_video=false&vote_count.gte=100`)
     .then((response) => {
-      res.send(response.data.results.map(({title, genre_ids}) => {
-        return {movies: title, genre: genre_ids}
+      res.send(response.data.results.map(({title, genre_ids, poster_path, release_date, vote_average}) => {
+        return {movies: title, genre: genre_ids, 
+          img: poster_path, release: release_date, 
+          score: vote_average}
       }));
     })
     .catch((error) => {
