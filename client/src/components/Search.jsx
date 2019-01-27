@@ -9,11 +9,16 @@ class Search extends React.Component {
     };
     this.getGenres = this.getGenres.bind(this);
   }
+  componentDidMount(){
+
+  }
+
   getGenres() {
     //make an axios request in this component to get the list of genres from your endpoint GET GENRES
     Axios('/genres')
       .then((response) => {
         console.log(response)
+        this.setState({genres: response})
       })
       .catch((error)=> {
         console.log(error)
@@ -28,11 +33,12 @@ class Search extends React.Component {
 
         {/* Make the select options dynamic from genres !!! */}
         {/* How can you tell which option has been selected from here? */}
-
+    {/* component will mount */}
         <select>
-          <option value="theway">The Way</option>
-          <option value="thisway">This Way</option>
-          <option value="thatway">That Way</option>
+          {this.state.genres.map((genre)=>{
+            return <option value={genre.id}>{this.state.genres.name}</option>
+          })}
+     
         </select>
         <br/><br/>
 
