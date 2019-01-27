@@ -18,7 +18,9 @@ axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&langua
   .then((response) => {
     // console.log(response.data.genres)
     // console.log(response.data.title)
-    console.log(response.data.results);
+    console.log(response.data.results.map((movies) => {
+      return movies.title
+    }));
     return response.data
   })
   .catch((error) => {

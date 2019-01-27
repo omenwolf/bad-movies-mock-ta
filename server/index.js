@@ -28,11 +28,10 @@ app.get('/genres', function(req, res) {
     .then((response)=> {
       // send back
       res.send(response.data)  //figure out the object data layout to get the exact list of genres
-      // return response.data
     })
     .catch((error) => {
       console.log(error);
-      res.status(404).send();
+      res.status(404).send('cannnot find genres');
     })
     // use this endpoint. you will need your API key from signup: https://api.themoviedb.org/3/genre/movie/list
     
