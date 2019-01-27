@@ -30,7 +30,7 @@ app.get('/genres', function(req, res) {
       // send back
       res.send(response.data.genres.map(({id, name}) => {
         return {id: id, genre: name}
-      }));  //figure out the object data layout to get the exact list of genres
+      }));
     })
     .catch((error) => {
       console.log(error);
@@ -44,8 +44,8 @@ app.get('/genres', function(req, res) {
     // use this endpoint to search for movies by genres (using API key): https://api.themoviedb.org/3/discover/movie
     axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=vote_average.asc&include_adult=false&include_video=false&vote_count.gte=100`)
     .then((response) => {
-      res.send(response.data.results.map((movies) => {
-        return {movies: movies.title, genre: movies.genre_ids}
+      res.send(response.data.results.map(({title, genre_ids}) => {
+        return {movies: title, genre: genre_ids}
       }));
     })
     .catch((error) => {
