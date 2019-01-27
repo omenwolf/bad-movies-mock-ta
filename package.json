@@ -10,13 +10,13 @@
   "author": "Peter Park",
   "license": "MIT",
   "devDependencies": {
-    "babel-core": "^6.23.3",
+    "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
-    "webpack": "^4.17.1",
+    "webpack": "^4.29.0",
     "webpack-cli": "^3.1.0"
   },
   "dependencies": {
@@ -27,8 +27,8 @@
     "mongodb": "^3.1.4",
     "mongoose": "^5.2.12",
     "mysql": "^2.15.0",
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
     "request": "^2.83.0"
   }
 }
