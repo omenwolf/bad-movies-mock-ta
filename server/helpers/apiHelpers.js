@@ -14,18 +14,32 @@ const { API_KEY } = require('../../config.js');
 //   .catch((error) => {
 //     console.log(error)
 //   })
-axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.asc&include_adult=false&include_video=false&page=1`)
+
+// filtering out movie titles & genre id's
+axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=vote_average.asc&include_adult=false&include_video=false&vote_count.gte=100`)
   .then((response) => {
     // console.log(response.data.genres)
     // console.log(response.data.title)
     console.log(response.data.results.map((movies) => {
-      return movies.title
+      return {movies: movies.title, genre: movies.genre_ids}
     }));
     return response.data
   })
   .catch((error) => {
     console.log(error)
   })
+
+
+// axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`)
+//   .then((response) => {
+//     console.log(response.data.genres.map(({id, name}) => {
+//       return {id: id, genre: name}
+//     }));
+//     return response.data
+//   })
+//   .catch((error) => {
+//     console.log(error)
+//   })
 
 // FOR REFERENCE:
 // https://www.themoviedb.org/account/signup
