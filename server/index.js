@@ -7,6 +7,8 @@ var app = express();
 // Sign up and get your moviedb API key here:
 // https://www.themoviedb.org/account/signup
 
+// npm run react-dev
+// npm run server-dev
 
 //Helpers
 var apiHelpers = require('./helpers/apiHelpers.js');
@@ -24,7 +26,9 @@ app.get('/genres', function(req, res) {
   // make an axios request to get the official list of genres from themoviedb
   axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}`)
     .then((response)=> {
-      return response.data //figure out the object data layout to get the exact list of genres
+      // send back
+      res.send(response.data)  //figure out the object data layout to get the exact list of genres
+      // return response.data
     })
     .catch((error) => {
       console.log(error);
@@ -32,14 +36,13 @@ app.get('/genres', function(req, res) {
     })
     // use this endpoint. you will need your API key from signup: https://api.themoviedb.org/3/genre/movie/list
     
-    // send back
   });
   
   app.get('/search', function(req, res) {
     // use this endpoint to search for movies by genres (using API key): https://api.themoviedb.org/3/discover/movie
-    axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}`)
+    axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.asc&include_adult=false&include_video=false&page=1`)
     .then((response) => {
-      return response.data
+      res.send(response.result)
     })
     .catch((error) => {
       console.log(error);
