@@ -33,7 +33,6 @@ class Search extends React.Component {
 
         {/* Make the select options dynamic from genres !!! */}
         {/* How can you tell which option has been selected from here? */}
-    {/* component will mount */}
         <select>
           {this.state.genres.map((genre)=>{
             return <option value={genre.id}>{this.state.genres.name}</option>
