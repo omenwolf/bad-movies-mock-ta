@@ -5,5 +5,22 @@ const sqlDb = require('../../db/sql');
 // const mongoDb = require('../../db/mongodb')
 
 module.exports = {
-  
+  movie: {
+    // implement a get request
+    get: function(callback) {
+      // fetching all movies
+      // title, rating, img, releaseDate, score
+      let queryStr = 'SELECT * from movies';
+      sqlDb.query(queryStr, function(error, results) {
+        callback(error,results)
+      })
+    },
+    // implement a post request
+    post: function(callback) {
+      let queryStr = '';
+      sqlDb.query(queryStr, function (error, results) {
+        callback(error, results)
+      })
+    }
+  }
 }
