@@ -39,7 +39,10 @@ class Movies extends React.Component {
         <li className="movie_item">
           <img src="https://lh3.googleusercontent.com/97gnjRiv2zIRnDupzfxYFoI-6zlIK3jKgb6KOCDf_tjWkY9epbITdSFIbiKhuccOqQ=w300" />
           <div className="movie_description">
-            <h2>Help now</h2>
+            {/* {this.state.movies.map((item)=>{
+              return <h2>{item}</h2>
+            })} */}
+            <h2>{console.log(this.state.movies)}</h2>
             <section className="movie_details">
               <div className="movie_year">
                 <span className="title">Year</span>

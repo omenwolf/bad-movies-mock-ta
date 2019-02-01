@@ -9,10 +9,10 @@ if(process.env.MONGODB_URI){
 
 const db = mongoose.connection;
 
-mongoose.Promise = Promise;
-db.on('error', console.error.bind(console, 'Connection error:'));
-db.once('open', () => {
-  console.log('Connected to db...');
-})
+// mongoose.Promise = Promise;
+// db.on('error', console.error.bind(console, 'Connection error:'));
+// db.once('open', () => {
+//   console.log('Connected to db...');
+// })
 
 module.exports.db = db

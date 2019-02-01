@@ -22,12 +22,17 @@ class App extends React.Component {
     // this.swapFavorites = this.swapFavorites.bind(this);
   }
 
+  componentDidMount(){
+    this.getMovies()
+    // this.swapFavorites()
+  }
+
   getMovies() {
     // make an axios request to your server on the GET SEARCH endpoint
     axios.get('/search')
       .then((response) => {
-        console.log(response)
-        this.setState(response.movies)
+        console.log(response.data[0].movies)
+        this.setState(response.data)
       })
       .catch((error)=>{
         console.log(error)
