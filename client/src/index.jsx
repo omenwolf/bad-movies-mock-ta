@@ -29,10 +29,10 @@ class App extends React.Component {
 
   getMovies() {
     // make an axios request to your server on the GET SEARCH endpoint
-    axios.get('/search')
+    axios.get('/search', {genre: genre_ids})
       .then((response) => {
-        console.log(response.data[0].movies)
-        this.setState(response.data)
+        console.log('getmovies', response.data)
+        this.setState({movies: response.data})
       })
       .catch((error)=>{
         console.log(error)
@@ -42,11 +42,12 @@ class App extends React.Component {
 
   saveMovie() {
     // same as above but do something diff
-    // axios.get('/saveMovie', () => {})
+    // axios.post('/saveMovie', () => {})
   }
 
   deleteMovie() {
     // same as above but do something diff
+    // axios.post('/saveMovie', () => {})
   }
 
   swapFavorites() {

@@ -45,7 +45,7 @@ app.get('/genres', function(req, res) {
     axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=vote_average.asc&include_adult=false&include_video=false&vote_count.gte=100`)
     .then((response) => {
       res.send(response.data.results.map(({title, genre_ids, poster_path, release_date, vote_average}) => {
-        return {movies: title, genre: genre_ids, 
+        return {title: title, genre: genre_ids, 
           img: poster_path, release: release_date, 
           score: vote_average}
       }));
